@@ -1,0 +1,6 @@
+framework module Pods_CliCli {
+  umbrella header "Pods-CliCli-umbrella.h"
+
+  export *
+  module * { export * }
+}

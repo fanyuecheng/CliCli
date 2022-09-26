@@ -1,0 +1,22 @@
+{
+  "name": "CCUI",
+  "version": "0.1.0",
+  "summary": "A short description of CCUI.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/月成/CCUI",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "月成": "694220741@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/月成/CCUI.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "13.0"
+  },
+  "source_files": "CCUI/Classes/**/*"
+}
