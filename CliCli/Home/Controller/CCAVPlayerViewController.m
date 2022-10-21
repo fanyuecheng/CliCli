@@ -76,6 +76,8 @@
               @"commonMetadata",
               @"availableMediaCharacteristicsWithMediaSelectionOptions"
           ];
+        [self.player pause];
+        self.player = nil;
         AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:asset automaticallyLoadedAssetKeys:keys];
         AVPlayer *player = [AVPlayer playerWithPlayerItem:item];
         self.player = player;
