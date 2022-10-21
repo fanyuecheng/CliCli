@@ -14,8 +14,13 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.6.5)
   - JXCategoryView (1.6.1)
   - JXPagingView/Pager (2.1.2)
+  - KTVCocoaHTTPServer (1.0.0):
+    - CocoaAsyncSocket
+  - KTVHTTPCache (2.0.1):
+    - KTVCocoaHTTPServer
   - MJRefresh (3.7.5)
   - SDWebImage (5.13.3):
     - SDWebImage/Core (= 5.13.3)
@@ -29,6 +34,7 @@ DEPENDENCIES:
   - AFNetworking (~> 4.0.1)
   - JXCategoryView (~> 1.6.1)
   - JXPagingView/Pager (~> 2.1.2)
+  - KTVHTTPCache (~> 2.0.1)
   - MJRefresh (~> 3.7.5)
   - SDWebImage (~> 5.13.3)
   - SVProgressHUD (~> 2.2.5)
@@ -38,8 +44,11 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - CocoaAsyncSocket
     - JXCategoryView
     - JXPagingView
+    - KTVCocoaHTTPServer
+    - KTVHTTPCache
     - MJRefresh
     - SDWebImage
     - SVProgressHUD
@@ -48,14 +57,17 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   JXCategoryView: 7b1ee69ede4843c581688afe84d0f047723262f2
   JXPagingView: 90924b364a2ff7e94db534fad1fa50925ff69ee4
+  KTVCocoaHTTPServer: df8d7b861e603ff8037e9b2138aca2563a6b768d
+  KTVHTTPCache: 588c3eb16f6bd1e6fde1e230dabfb7bd4e490a4d
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   SDWebImage: af5bbffef2cde09f148d826f9733dcde1a9414cd
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   YTKNetwork: c16be90b06be003de9e9cd0d3b187cc8eaf35c04
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 414f09452c28e086c417c4023572834c2fd261b6
+PODFILE CHECKSUM: ac406dbf71c3c7427725cecea0851b937fc1db84
 
 COCOAPODS: 1.11.3

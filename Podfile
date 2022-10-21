@@ -14,7 +14,7 @@ def common_pods
    pod 'YTKNetwork', '~> 3.0.6'
    pod 'AFNetworking', '~> 4.0.1'
    pod 'SVProgressHUD', '~> 2.2.5'
-
+   pod 'KTVHTTPCache', '~> 2.0.1'
 end
 
 target 'CliCli' do

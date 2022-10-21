@@ -6,6 +6,7 @@
 //
 
 #import "CCAVPlayerViewController.h"
+#import <KTVHTTPCache/KTVHTTPCache.h>
 
 @interface CCAVPlayerViewController ()
 
@@ -29,6 +30,31 @@
     }
     return self;
 }
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+#if defined(DEBUG)
+        [KTVHTTPCache logSetConsoleLogEnable:YES];
+#endif
+        NSError *error = nil;
+        [KTVHTTPCache proxyStart:&error];
+        if (error) {
+            NSLog(@"Proxy Start Failure, %@", error);
+        } else {
+            NSLog(@"Proxy Start Success");
+        }
+        [KTVHTTPCache encodeSetURLConverter:^NSURL *(NSURL *URL) {
+            NSLog(@"URL Filter reviced URL : %@", URL);
+            return URL;
+        }];
+        [KTVHTTPCache downloadSetUnacceptableContentTypeDisposer:^BOOL(NSURL *URL, NSString *contentType) {
+            NSLog(@"Unsupport Content-Type Filter reviced URL : %@, %@", URL, contentType);
+            return NO;
+        }];
+    });
+}
+ 
 
 #pragma mark - 方向
 - (BOOL)shouldAutorotate {
@@ -69,7 +95,9 @@
 
 - (void)setPlayURL:(NSURL *)url {
     if (url) {
-        AVAsset *asset = [AVAsset assetWithURL:url];
+        NSString *urlString = [[url.absoluteString stringByRemovingPercentEncoding] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSURL *cacheURL = [KTVHTTPCache proxyURLWithOriginalURL:[NSURL URLWithString:urlString]];
+        AVAsset *asset = [AVAsset assetWithURL:cacheURL];
         NSArray *keys = @[
               @"tracks",
               @"duration",
