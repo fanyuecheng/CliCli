@@ -2,7 +2,7 @@
 //  CCAVPlayerViewController.m
 //  CliCli
 //
-//  Created by Fancy 
+//  Created by Fancy
 //
 
 #import "CCAVPlayerViewController.h"
@@ -54,7 +54,16 @@
         }];
     });
 }
- 
+
+- (void)seekToTimeWithMillisecond:(double)millisecond {
+    CMTimeScale timescale = self.player.currentItem.asset.duration.timescale;
+    CMTime cmtime = CMTimeMakeWithSeconds(millisecond / 1000.0, timescale);
+    [self seekToTime:cmtime];
+}
+
+- (void)seekToTime:(CMTime)time {
+    [self.player seekToTime:time];
+}
 
 #pragma mark - 方向
 - (BOOL)shouldAutorotate {

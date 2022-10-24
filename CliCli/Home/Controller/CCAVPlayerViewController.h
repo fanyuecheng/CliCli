@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithURLString:(NSString *)URLString;
 
+- (void)seekToTimeWithMillisecond:(double)millisecond;
+- (void)seekToTime:(CMTime)time;
+
 @end
 
 NS_ASSUME_NONNULL_END
