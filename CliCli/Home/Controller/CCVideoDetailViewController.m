@@ -2,7 +2,7 @@
 //  CCVideoDetailViewController.m
 //  CliCli
 //
-//  Created by Fancy 
+//  Created by Fancy
 //
 
 #import "CCVideoDetailViewController.h"
@@ -19,6 +19,7 @@
 @interface CCVideoDetailViewController () <JXPagerViewDelegate>
 
 @property (nonatomic, assign) NSInteger     videoId;
+@property (nonatomic, assign) NSInteger     video_section_index;
 @property (nonatomic, strong) CCVideoDetail *detail;
 @property (nonatomic, strong) CCVideoEpisode *episode;
 @property (nonatomic, strong) CCAVPlayerViewController *playerController;
@@ -170,6 +171,7 @@
 #pragma mark - Method
 - (void)episodeWithIndex:(NSInteger)index
                 finished:(void (^)(CCVideoEpisode *ep, NSError *error))finished {
+    self.video_section_index = index;
     NSArray *urlArray = [self.detail.vod_info.vod_url_with_player.firstObject episodeArray];
     CCVideoEpisode *episode = [urlArray cc_safeObjectAtIndex:index];
     episode.selected = YES;
@@ -248,6 +250,11 @@
                 [self.view layoutIfNeeded];
                 [self hideEmptyView];
                 self.playerController.view.hidden = NO;
+                
+                // 播放历史中的index和当前播放的index一致 从历史进度播放
+                if (self.detail.vod_history.video_section_index == self.video_section_index) {
+                    [self.playerController seekToTimeWithMillisecond:self.detail.vod_history.watch_time];
+                }
             }
         };
     }
