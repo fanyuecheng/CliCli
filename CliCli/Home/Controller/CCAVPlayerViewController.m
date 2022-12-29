@@ -37,6 +37,7 @@
 #if defined(DEBUG)
         [KTVHTTPCache logSetConsoleLogEnable:YES];
 #endif
+        [KTVHTTPCache cacheSetMaxCacheLength:2000 * 1024 * 1024];
         NSError *error = nil;
         [KTVHTTPCache proxyStart:&error];
         if (error) {
